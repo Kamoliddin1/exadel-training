@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h1>Branch List</h1>
+        <div>{% if branch_list %}</div>
+            <div>{% for branch in branch_list %}</div>
+                {{ branch.name }} {{ branch.company }}
+            <div>{% endfor %}</div>
+        <div>{% endif %}</div>
+    </div>
+{% endblock %}

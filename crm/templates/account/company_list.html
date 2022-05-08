@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h1>Company List</h1>
+        <div>{% if company_list %}</div>
+            <div>{% for company in company_list %}</div>
+                {{ company.title }}
+            <div>{% endfor %}</div>
+        <div>{% endif %}</div>
+    </div>
+{% endblock %}
