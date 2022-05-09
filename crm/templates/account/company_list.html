@@ -5,8 +5,10 @@
         <h1>Company List</h1>
         <div>{% if company_list %}</div>
             <div>{% for company in company_list %}</div>
-                {{ company.title }}
-            <div>{% endfor %}</div>
-        <div>{% endif %}</div>
+                <ul class="list-unstyled">
+                    <li>{{ company.title }}<li>
+                </ul>
+                <div>{% endfor %}</div>
+            <div>{% endif %}</div>
     </div>
 {% endblock %}
