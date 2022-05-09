@@ -2,7 +2,7 @@
 
 {% block content %}
     <div>
-        <h1>User List</h1>
+        <h1 class="lead">User List</h1>
         <div>{% if user_list %}</div>
             <div>{% for user in user_list %}</div>
                 {{ user.user.first_name }}

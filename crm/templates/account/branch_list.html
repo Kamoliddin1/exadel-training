@@ -2,11 +2,14 @@
 
 {% block content %}
     <div>
-        <h1>Branch List</h1>
+        <h1 class="lead">Branch List</h1>
         <div>{% if branch_list %}</div>
             <div>{% for branch in branch_list %}</div>
-                {{ branch.name }} {{ branch.company }}
-            <div>{% endfor %}</div>
-        <div>{% endif %}</div>
+                <div class="alert alert-primary" role="alert">
+                    <span>Name:</span> {{ branch.name }} - <span>Company:</span> {{ branch.company }}
+                </div>
+
+                <div>{% endfor %}</div>
+            <div>{% endif %}</div>
     </div>
 {% endblock %}
