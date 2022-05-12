@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import (ListCreateAPIView, RetrieveUpdateDestroyAPIView, )
 
 from ..models import Country
-from ..serializers.company import CountrySerializer, CountryCreateSerializer, CountryUpdateSerializer, CountryCRUDSerializer
+from ..serializers.country import CountrySerializer, CountryCreateSerializer, CountryUpdateSerializer, CountryCRUDSerializer
 
 
 @api_view(['GET', 'POST'])

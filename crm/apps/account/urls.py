@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views.city import CityListCreateAPIView, CityRetrieveUpdateDestroyAPIView
-from .views.company import country_list, country_detail, CountryListView, CountryDetailView,\
+from .views.country import country_list, country_detail, CountryListView, CountryDetailView,\
     CountryListCreateAPIView, CountryRetrieveUpdateDestroyAPIView
 
 urlpatterns = [
