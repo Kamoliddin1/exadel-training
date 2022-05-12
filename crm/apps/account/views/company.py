@@ -1,13 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from rest_framework.generics import (ListAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView,)
+from rest_framework.generics import (ListCreateAPIView, RetrieveUpdateDestroyAPIView, )
 
-from .models import Company, Branch, User, City, Account, Country
-from .serializers import CountrySerializer, CountryCreateSerializer, CountryUpdateSerializer, CountryCRUDSerializer
+from ..models import Country
+from ..serializers.company import CountrySerializer, CountryCreateSerializer, CountryUpdateSerializer, CountryCRUDSerializer
 
 
 @api_view(['GET', 'POST'])
