@@ -3,7 +3,7 @@ from ..models import Account
 
 
 class AccountSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
+    id = serializers.IntegerField(required=False)
     username = serializers.CharField(max_length=150)
     is_user = serializers.BooleanField(default=False)
     is_company = serializers.BooleanField(default=False)
