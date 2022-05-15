@@ -5,6 +5,7 @@ from .views.company import CompanyListCreateAPIView, CompanyDetailAPIView
 from .views.city import CityListCreateAPIView, CityRetrieveUpdateDestroyAPIView
 from .views.country import country_list, country_detail, CountryListView, CountryDetailView,\
     CountryListCreateAPIView, CountryRetrieveUpdateDestroyAPIView
+from .views.user import UserDetailAPIView, UserListCreateAPIView
 
 urlpatterns = [
     path('country', country_list, name='country_list'),
@@ -22,4 +23,7 @@ urlpatterns = [
 
     path('accounts/', AccountListCreateAPIView.as_view()),
     path('accounts/<int:pk>/', AccountDetailAPIView.as_view()),
+
+    path('users/', UserListCreateAPIView.as_view()),
+    path('user/<int:pk>/', UserDetailAPIView.as_view()),
 ]
