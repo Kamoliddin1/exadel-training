@@ -3,6 +3,15 @@ from django.utils import timezone
 
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.base_user import BaseUserManager
+
+
+class AccountManager(BaseUserManager):
+    def user(self):
+        return self.get_queryset().filter(is_user=True)
+
+    def company(self):
+        return self.get_queryset().filter(is_company=True)
 
 
 class Country(models.Model):
@@ -48,6 +57,7 @@ class Branch(models.Model):
 class Account(AbstractUser):
     is_user = models.BooleanField(null=True, blank=True)
     is_company = models.BooleanField(null=True, blank=True)
+    objects = AccountManager()
 
     class Meta:
         verbose_name = 'Account'
