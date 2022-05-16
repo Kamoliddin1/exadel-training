@@ -1,0 +1,34 @@
+[
+    {
+        "Series_reference": "BDCQ.SF1AA2CA",
+        "Period": "2016.06",
+        "Data_value": "1116.386",
+        "Suppressed": "",
+        "STATUS": "F",
+        "UNITS": "Dollars",
+        "Magnitude": "6",
+        "Subject": "Business Data Collection - BDC",
+        "Group": "Industry by financial variable (NZSIOC Level 2)",
+        "Series_title_1": "Sales (operating income)",
+        "Series_title_2": "Forestry and Logging",
+        "Series_title_3": "Current prices",
+        "Series_title_4": "Unadjusted",
+        "Series_title_5": ""
+    },
+    {
+        "Series_reference": "BDCQ.SF1AA2CA",
+        "Period": "2016.09",
+        "Data_value": "1070.874",
+        "Suppressed": "",
+        "STATUS": "F",
+        "UNITS": "Dollars",
+        "Magnitude": "6",
+        "Subject": "Business Data Collection - BDC",
+        "Group": "Industry by financial variable (NZSIOC Level 2)",
+        "Series_title_1": "Sales (operating income)",
+        "Series_title_2": "Forestry and Logging",
+        "Series_title_3": "Current prices",
+        "Series_title_4": "Unadjusted",
+        "Series_title_5": ""
+    }
+]

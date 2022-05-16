@@ -22,9 +22,10 @@ class MyIterator:
 
 
 class CSVReader:
-    def __init__(self, file):
+    def __init__(self, file, file_name):
         self.file = file
-        self.line_num = sum(1 for _ in open(csvfile))
+        self.file_name = file_name
+        self.line_num = sum(1 for _ in open(file_name))
 
     def __get_data(self):
         return self.file.read()
@@ -56,6 +57,6 @@ class CSVReader:
 
 if __name__ == "__main__":
     with open(csvfile) as csv_file:
-        my_file = CSVReader(csv_file)
+        my_file = CSVReader(csv_file, csvfile)
         parsed = my_file.get_json()
         print(parsed)
