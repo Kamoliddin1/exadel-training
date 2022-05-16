@@ -1,4 +1,5 @@
 from django.urls import path
+from rest_framework_simplejwt import views as jwt_views
 
 from .views.account import AccountViewSet
 from .views.company import CompanyViewSet
@@ -13,4 +14,9 @@ router.register(r'cities', CityModelViewSet, basename='city')
 router.register(r'companies', CompanyViewSet, basename='company')
 router.register(r'countries', CountryViewSet, basename='country')
 router.register(r'users', UserViewSet, basename='user')
-urlpatterns = router.urls
+router_urls = router.urls
+auth_urls = [
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+]
+urlpatterns = router_urls + auth_urls
