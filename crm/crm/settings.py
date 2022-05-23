@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     # apps
     'apps.account',
     # 3rd party
-    'rest_framework'
+    'rest_framework',
+    'debug_toolbar',
+    'drf_yasg2',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'crm.urls'
@@ -127,6 +130,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ]
 }
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
