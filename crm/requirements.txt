@@ -23,6 +23,9 @@ PyJWT==2.4.0
 pyparsing==3.0.9
 pytest==7.1.2
 pytest-django==4.5.2
+pytest-factoryboy==2.3.1
+factory-boy==3.2.1
+Faker==13.12.0
 pytz==2022.1
 requests==2.27.1
 ruamel.yaml==0.17.21
