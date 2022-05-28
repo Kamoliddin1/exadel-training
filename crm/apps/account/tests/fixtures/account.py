@@ -4,24 +4,31 @@ import pytest
 from typing import Any
 
 from rest_framework.test import APIClient
-from apps.account.models import Account, User
+from apps.account.models import Account
 
 
 @pytest.fixture
-def create_client(db) -> Account:
+def create_client(db, account_client_factory) -> Account:
     """
     Create client user
-    :return: User instance
+    :return: Account instance
     """
-    user_data = {
-        "username": 'kamoliddin',
-        "is_user": True,
-        "is_company": False,
-    }
-    make_user, _ = Account.objects.get_or_create(**user_data)
+    make_user = account_client_factory.create()
     make_user.set_password('147007')
     make_user.save()
     return make_user
+
+
+@pytest.fixture
+def create_company(db, account_company_factory) -> Account:
+    """
+    Create company user
+    :return: Account instance
+    """
+    make_company = account_company_factory.create()
+    make_company.set_password('147007')
+    make_company.save()
+    return make_company
 
 
 @pytest.fixture
