@@ -1,14 +1,9 @@
-from rest_framework.generics import (ListCreateAPIView, RetrieveUpdateDestroyAPIView, )
+from rest_framework import viewsets
 
 from ..models import City
 from ..serializers.city import CitySerializer
 
 
-class CityListCreateAPIView(ListCreateAPIView):
-    serializer_class = CitySerializer
-    queryset = City.objects.all()
-
-
-class CityRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+class CityModelViewSet(viewsets.ModelViewSet):
     serializer_class = CitySerializer
     queryset = City.objects.all()
