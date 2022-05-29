@@ -5,6 +5,7 @@ import json
 pytest_plugins = [
     "apps.account.tests.fixtures.account",
     "apps.account.tests.fixtures.company",
+    "apps.account.tests.fixtures.auth",
 ]
 pytestmark = pytest.mark.django_db
 
