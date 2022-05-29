@@ -4,6 +4,7 @@ import json
 
 pytest_plugins = [
     "apps.account.tests.fixtures.account",
+    "apps.account.tests.fixtures.auth",
 ]
 pytestmark = pytest.mark.django_db
 
@@ -33,7 +34,7 @@ class TestAccountEndpoints:
 
     def test_accounts_update(self, auto_login, create_client) -> None:
         expected_json = {
-            "username": create_client.username + '1',
+            "username": create_client.username,
             "password": create_client.password,
             "is_user": create_client.is_user,
             "is_company": create_client.is_company
