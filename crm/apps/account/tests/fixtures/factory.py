@@ -1,6 +1,7 @@
 import factory
 from faker import Faker
-from apps.account.models import Company, City, Country, Account, User
+from apps.account.models import Company, City, Country, Account, User, Branch, Rating
+import random
 
 fake = Faker()
 
@@ -49,6 +50,16 @@ class UserFactory(factory.django.DjangoModelFactory):
         model = User
 
 
+class RatingFactory(factory.django.DjangoModelFactory):
+    author = factory.SubFactory(UserFactory)
+    rate = random.randint(1, 5)
+    review = fake.text()
+    timestamp = fake.date_time()
+
+    class Meta:
+        model = Rating
+
+
 class CompanyFactory(factory.django.DjangoModelFactory):
     title = fake.company()
     company = factory.SubFactory(AccountCompanyFactory)
@@ -57,3 +68,11 @@ class CompanyFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = Company
+
+
+class BranchFactory(factory.django.DjangoModelFactory):
+    name = fake.last_name()
+    company = factory.SubFactory(CompanyFactory)
+
+    class Meta:
+        model = Branch
