@@ -30,7 +30,7 @@ class AccountCompanyFactory(factory.django.DjangoModelFactory):
 
 
 class AccountClientFactory(factory.django.DjangoModelFactory):
-    username = fake.first_name()
+    username = factory.Sequence(lambda n: "bob{}".format(n))
     is_company = False
     is_user = True
 
