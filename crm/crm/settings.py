@@ -130,6 +130,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ]
 }
+CELERY_BROKER_URL = 'amqp://localhost'
+
 
 INTERNAL_IPS = [
     "127.0.0.1",
