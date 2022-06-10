@@ -15,7 +15,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env(os.path.join(BASE_DIR, '../.env'))
 
 env = environ.Env(
     # set casting, default value
@@ -28,8 +28,6 @@ env = environ.Env(
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
-ALLOWED_HOSTS = env('SERVERNAMES').split(' ')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,8 +40,6 @@ INSTALLED_APPS = [
     'apps.account',
     # 3rd party
     'rest_framework',
-    # TODO delete debug_toolbar
-    'debug_toolbar',
     'drf_yasg2',
     'django_filters',
 ]
@@ -56,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'crm.urls'
@@ -146,9 +141,6 @@ REST_FRAMEWORK = {
 }
 CELERY_BROKER_URL = 'amqp://localhost'
 
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
