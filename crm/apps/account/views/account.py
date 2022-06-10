@@ -35,4 +35,3 @@ class AccountViewSet(viewsets.ViewSet):
         instance = get_object_or_404(self.queryset, pk=pk)
         instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-#
