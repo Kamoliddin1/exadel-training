@@ -6,3 +6,5 @@ from ..serializers.rating import RatingSerializer
 class RatingViewSet(ModelViewSet):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
+    search_fields = ['rate']
+    ordering = ['id']

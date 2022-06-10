@@ -7,3 +7,5 @@ from ..serializers.country import CountrySerializer
 class CountryViewSet(ModelViewSet):
     serializer_class = CountrySerializer
     queryset = Country.objects.all()
+    ordering = ['id']
+    search_fields = ['name', 'id']
