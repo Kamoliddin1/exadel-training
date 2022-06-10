@@ -57,7 +57,6 @@ class Branch(models.Model):
 class Account(AbstractUser):
     is_user = models.BooleanField(null=True, blank=True)
     is_company = models.BooleanField(null=True, blank=True)
-    objects = AccountManager()
 
     class Meta:
         verbose_name = 'Account'
