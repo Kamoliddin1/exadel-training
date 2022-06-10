@@ -3,7 +3,6 @@ from rest_framework import status
 import json
 
 pytest_plugins = [
-    # "apps.account.tests.fixtures.account",
     "apps.account.tests.fixtures.user",
     "apps.account.tests.fixtures.city",
     "apps.account.tests.fixtures.auth",
@@ -45,7 +44,7 @@ class TestUserEndpoints:
         client, user = auto_login()
 
         expected_json = {
-            'user': 1,
+            'user': int(user_ins.user_id)-1,
             'house_number': user_ins.house_number,
             'total_area': user_ins.total_area,
             'street': user_ins.street,
@@ -61,7 +60,7 @@ class TestUserEndpoints:
 
     def test_user_update(self, auto_login, user_ins) -> None:
         expected_json = {
-            'user': 1,
+            'user': int(user_ins.user_id)-1,
             'house_number': user_ins.house_number,
             'total_area': user_ins.total_area,
             'street': user_ins.street,

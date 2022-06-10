@@ -23,7 +23,8 @@ class TestBranchEndpoints:
         expected_json = {
             'id': branch_ins.id,
             'name': branch_ins.name,
-            'company': branch_ins.company_id
+            'company': branch_ins.company_id,
+            'company_name': branch_ins.company.title
         }
         client, user = auto_login()
         response = client.get(f"{self.url}{branch_ins.id}/")

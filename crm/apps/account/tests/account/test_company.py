@@ -34,7 +34,7 @@ class TestCompanyEndpoints:
 
     def test_company_create(self, auto_login, create_company_ins) -> None:
         expected_json = {
-            'company': 1,
+            'company': int(create_company_ins.company_id)-1,
             'title': create_company_ins.title,
             'street': create_company_ins.street,
             'city': create_company_ins.city_id
