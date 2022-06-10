@@ -11,7 +11,11 @@ Project requires [Django](https://docs.djangoproject.com/) 3.2+ to run.
 cd crm
 pip3 install requirements.txt
 ```
-
+## Celery
+```sh
+celery -A crm.celery worker -B -l info
+celery -A crm.celery beat -l info
+```
 ## Development
 
 ```sh
