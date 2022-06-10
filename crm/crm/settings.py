@@ -10,25 +10,26 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'super_secret')
-
-# django-insecure-&2d6!r+zgp6r4so6wuj*f%)ugpln$gct&1#8p7e5$c6o@&ay=t
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get('DEBUG')) == '1'
-
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
-# Application definition
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
+ALLOWED_HOSTS = env('SERVERNAMES').split(' ')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,8 +42,10 @@ INSTALLED_APPS = [
     'apps.account',
     # 3rd party
     'rest_framework',
+    # TODO delete debug_toolbar
     'debug_toolbar',
     'drf_yasg2',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -81,8 +84,12 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
@@ -128,10 +135,16 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2,
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.OrderingFilter",
+        "rest_framework.filters.SearchFilter",
+    ],
 }
 CELERY_BROKER_URL = 'amqp://localhost'
-
 
 INTERNAL_IPS = [
     "127.0.0.1",
