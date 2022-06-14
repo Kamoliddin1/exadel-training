@@ -6,6 +6,9 @@ services:
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
+    volumes:
+      - production_static_data:/vol/web
+    restart: always
     env_file:
       - .env
     depends_on:
@@ -22,3 +25,5 @@ services:
     ports:
       - ${DB_PORT}:5432
     env_file: .env
+volumes:
+  production_static_data:
